@@ -48,7 +48,7 @@ public class UserController {
     }
 
     @RequestMapping(path = "/user/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> updateUser(@PathVariable("id") Long id, @Valid UserRequest userRequest){
+    public ResponseEntity<?> updateUser(@PathVariable("id") Long id, @RequestBody @Valid UserRequest userRequest){
         service.updateUser(id, new User(null, userRequest.name(), userRequest.email()));
         return ResponseEntity.noContent().build();
     }
